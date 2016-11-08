@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+int main() {
+   int numGuests      = 0;
+   int numLargePizza  = 0;
+   int numMediumPizza = 0;
+   int numSmallPizza  = 0;   
+   int userTipValue = 0;   
+   double totalAreaPizza = 0.0;
+   double areaLargePizza = 0.0;
+   double areaMediumPizza = 0.0;
+   double areaSmallPizza = 0.0;
+   double areaPerGuest = 0.0;
+   double percentConversionNum = 0.01;
+   double roundUpNum = 0.5;
+   int totalCostEvent = 0.0;   
+   double totalCostPizza = 0.0;
+   double costTip = 0.0;   
+   const double PI = 3.14159;   
+   const double COST_LARGE = 14.68;
+   const double COST_MEDIUM = 11.48;
+   const double COST_SMALL = 7.28;   
+   const int RADIUS_LARGE = 10;
+   const int RADIUS_MEDIUM = 8;
+   const int RADIUS_SMALL = 6;  
+   const int PEOPLE_PER_LARGE = 7;
+   const int PEOPLE_PER_MEDIUM = 3;
+      
+   cout << "Please enter the number of guests: ";
+   cout << endl;
+   cout << endl;
+   cin  >> numGuests;  
+   
+   numLargePizza  = (numGuests / PEOPLE_PER_LARGE);   
+   numMediumPizza = ((numGuests % PEOPLE_PER_LARGE) / PEOPLE_PER_MEDIUM);
+   numSmallPizza  = ((numGuests % PEOPLE_PER_LARGE) % PEOPLE_PER_MEDIUM);   
+      
+   cout << numLargePizza  << " large pizzas, ";
+   cout << numMediumPizza << " medium pizzas, ";
+   cout << " and " << numSmallPizza  << " small pizzas will be needed.";
+   cout << endl;
+   cout << endl;
+   
+   areaLargePizza = numLargePizza * (PI * (RADIUS_LARGE * RADIUS_LARGE));
+   areaMediumPizza = numMediumPizza * (PI * (RADIUS_MEDIUM * RADIUS_MEDIUM));
+   areaSmallPizza = numSmallPizza * (PI * (RADIUS_SMALL * RADIUS_SMALL));
+   totalAreaPizza = areaSmallPizza + areaMediumPizza + areaLargePizza;
+   areaPerGuest = totalAreaPizza / numGuests;
+   
+   cout << "A total of " << totalAreaPizza << " square inches of pizza will be purchased (";
+   cout << areaPerGuest << " per guest).";
+   cout << endl;
+   cout << endl;   
+   cout << "Please enter the tip as a percentage (i.e. 10 means 10%): ";
+   cin  >> userTipValue;
+   
+   totalCostPizza = (COST_LARGE * numLargePizza) + (COST_MEDIUM * numMediumPizza) + (COST_SMALL * numSmallPizza);
+   costTip = ((userTipValue * percentConversionNum) * totalCostPizza);
+   totalCostEvent = costTip + totalCostPizza + roundUpNum;
+   
+   
+   cout << endl;
+   cout << endl;
+   cout << endl;
+   cout << "The total cost of the event will be: $";
+   cout << totalCostEvent;
+   cout << endl;
+   
+
+   
+   return 0;
+}
+
+   
